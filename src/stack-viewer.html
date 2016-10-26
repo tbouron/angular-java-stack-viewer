@@ -1,0 +1,19 @@
+<div ng-repeat="group in stack.groups track by $index" class="group" ng-init="group.isCollapsed = true" ng-class="{'has-exception': group.exception, active: !group.isCollapsed && group.stackPackage.isVendor}">
+    <div ng-if="group.exception" class="alert alert-warning"><span class="label label-warning">{{group.exception.exception}}</span>&nbsp;{{group.exception.message}}</div>
+    <ul ng-class="{vendor: group.stackPackage.isVendor}">
+        <li ng-if="group.stackPackage.isVendor" class="line">
+            <span ng-click="group.isCollapsed = !group.isCollapsed" class="vendor-header">
+            <span class="vendor-name label label-info">{{group.stackPackage.name}}</span>&nbsp;
+            <small class="vendor-calls text-muted">{{group.lines.length}} more calls</small>
+          </span>
+            <ul class="vendor-body">
+                <li ng-repeat="line in group.lines track by $index" class="line">
+                    {{line.javaClass}}.{{line.method}}&nbsp;<span class="label label-line" ng-if="line.line >= 0">line {{line.line}}</span>
+                </li>
+            </ul>
+        </li>
+        <li ng-if="!group.stackPackage.isVendor" ng-repeat="line in group.lines track by $index" class="line app">
+            {{line.javaClass}}.{{line.method}}&nbsp;<span class="label label-line" ng-if="line.line >= 0">line {{line.line}}</span>
+        </li>
+    </ul>
+</div>
