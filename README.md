@@ -3,6 +3,11 @@ Modern Java stack traces viewer for Angular 1.x.
 
 You can checkout this [the working demo](https://codepen.io/tbouron/pen/KgLpWB) to see how it looks like.
 
+| Branch | Build | Test coverage |
+| --- | --- | --- |
+| `master` | [![Travis](https://img.shields.io/travis/tbouron/angular-java-stack-viewer/master.svg)](https://travis-ci.org/tbouron/angular-java-stack-viewer/branches) | [![Codacy](https://img.shields.io/codacy/coverage/8a2c7136efee4433b21c32f872c98c0d/master.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/files?bid=3852866) |
+| `develop` | [![Travis](https://img.shields.io/travis/tbouron/angular-java-stack-viewer/develop.svg)](https://travis-ci.org/tbouron/angular-java-stack-viewer/branches) | [![Codacy](https://img.shields.io/codacy/coverage/8a2c7136efee4433b21c32f872c98c0d/develop.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/files?bid=3852865) |
+
 *The library has been developed to use [Bootstrap](http://getbootstrap.com/) as CSS framework. However, you can use your own CSS and template if you want to, see `Usage` section.*
 
 ## Install
