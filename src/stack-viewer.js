@@ -1,4 +1,4 @@
-import 'stack-viewer.less';
-import module from 'stack-viewer-nocss';
+import './stack-viewer.less';
+import stackViewerNocss from './stack-viewer-nocss';
 
-export default module;
+export default stackViewerNocss;

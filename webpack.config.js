@@ -1,51 +1,46 @@
+var env = process.env.NODE_ENV || 'development';
+var path = require('path');
+var pkg = require('./package.json');
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-var path = require('path');
-var env = require('yargs').argv.mode;
-var pkg = require('./package.json');
 
 var entry = {};
-entry[pkg.name] = __dirname + '/src/stack-viewer.js';
+entry[pkg.name] = [__dirname + '/src/stack-viewer.js'];
 entry[pkg.name + '-nocss'] = [__dirname + '/src/stack-viewer-nocss.js'];
 
-var plugins = [], outputFile;
-
-if (env === 'build') {
-    plugins.push(new UglifyJsPlugin({ minimize: true }));
-    outputFile = '[name].min.js';
-} else {
-    outputFile = '[name].js';
-}
+console.log('=> Building library for environment: ' + env);
 
 var config = {
     entry: entry,
     devtool: 'source-map',
     output: {
         path: __dirname + '/lib',
-        filename: outputFile,
+        filename: '[name]' + (env === 'prod' ? '.min' : '') + '.js',
         library: pkg.name,
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loader: "eslint",
+                exclude: /node_modules/
+            }
+        ],
         loaders: [
             {
                 test: /\.js$/,
                 loader: 'babel',
                 exclude: /node_modules/
             },
-            // {
-            //     test: /\.js$/,
-            //     loader: 'eslint-loader',
-            //     exclude: /node_modules/
-            // },
             {
                 test: /\.less$/,
                 loader: 'style!css!less'
             },
             {
                 test: /\.html$/,
-                loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/&prefix=templates/!html'
+                loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, 'src')) + '/&prefix=templates/!html'
             }
         ]
     },
@@ -56,7 +51,20 @@ var config = {
     externals: {
         angular: 'angular',
     },
-    plugins: plugins
+    plugins: []
 };
+
+if (['production', 'ci'].indexOf(env) > -1) {
+    config.plugins.push(new UglifyJsPlugin({
+        mangle: true,
+        compress: {
+            drop_console: true,
+            drop_debugger: true,
+            warnings: false
+        }
+    }));
+} else {
+    config.watch = true;
+}
 
 module.exports = config;

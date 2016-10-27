@@ -1,6 +1,6 @@
 import template from './stack-viewer.html';
-import {angular} from 'angular';
-import {parser} from 'java-stack-parser';
+import angular from 'angular';
+import {Stack} from 'java-stack-parser';
 
 let MODULE_NAME = 'tb.stack-viewer';
 
@@ -20,20 +20,23 @@ export function stackViewerDirective($timeout) {
         link: link
     };
 
-    function link(scope) {
-        scope.stack = new parser.Stack(scope.vendors);
+    function link(scope, element) {
+        scope.stack = new Stack(scope.vendors);
         scope.$watch('vendors', ()=> {
-            scope.stack = new parser.Stack(scope.vendors);
-            scope.stack.parse(scope.trace);
-            $timeout(()=> {
-                angular.element(document.querySelector('.app')).addClass('main-error');
-            });
+            scope.stack = new Stack(scope.vendors);
+            parse(scope, element);
         }, true);
         scope.$watch('trace', ()=> {
+            parse(scope, element);
+        });
+    }
+
+    function parse(scope, element) {
+        if (scope.trace) {
             scope.stack.parse(scope.trace);
             $timeout(()=> {
-                angular.element(document.querySelector('.app')).addClass('main-error');
+                angular.element(element[0].querySelector('.app')).addClass('main-error');
             });
-        });
+        }
     }
 }
