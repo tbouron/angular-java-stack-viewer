@@ -4,6 +4,13 @@ var pkg = require('./package.json');
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
+var banner = [
+    pkg.name + ' by ' + pkg.author,
+    pkg.homepage,
+    'Version: ' + pkg.version + ' - ' +  new Date().getTime(),
+    'License: ' + pkg.license
+].join('\n');
+
 var entry = {};
 entry[pkg.name] = [__dirname + '/src/stack-viewer.js'];
 entry[pkg.name + '-nocss'] = [__dirname + '/src/stack-viewer-nocss.js'];
@@ -15,7 +22,7 @@ var config = {
     devtool: 'source-map',
     output: {
         path: __dirname + '/lib',
-        filename: '[name]' + (env === 'prod' ? '.min' : '') + '.js',
+        filename: '[name]' + (env === 'production' ? '.min' : '') + '.js',
         library: pkg.name,
         libraryTarget: 'umd',
         umdNamedDefine: true
@@ -51,7 +58,9 @@ var config = {
     externals: {
         angular: 'angular',
     },
-    plugins: []
+    plugins: [
+        new webpack.BannerPlugin(banner)
+    ]
 };
 
 if (['production', 'ci'].indexOf(env) > -1) {
