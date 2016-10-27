@@ -1,5 +1,4 @@
 var env = process.env.NODE_ENV || 'development';
-var path = require('path');
 var webpackConfig = require('./webpack.config');
 
 // Update the webpack config to add the coverage loader (and don't mess with the eslint!)
@@ -26,7 +25,7 @@ module.exports = function (config) {
             stats: 'errors-only'
         },
         coverageReporter: {
-            type : 'lcov'
+            type: 'lcov'
         },
         autoWatch: env !== 'ci',
         colors: env !== 'ci',

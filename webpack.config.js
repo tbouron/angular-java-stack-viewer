@@ -7,7 +7,7 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var banner = [
     pkg.name + ' by ' + pkg.author,
     pkg.homepage,
-    'Version: ' + pkg.version + ' - ' +  new Date().getTime(),
+    'Version: ' + pkg.version + ' - ' + new Date().getTime(),
     'License: ' + pkg.license
 ].join('\n');
 
@@ -31,7 +31,7 @@ var config = {
         preLoaders: [
             {
                 test: /\.js$/,
-                loader: "eslint",
+                loader: 'eslint',
                 exclude: /node_modules/
             }
         ],
@@ -56,7 +56,7 @@ var config = {
         extensions: ['', '.js']
     },
     externals: {
-        angular: 'angular',
+        angular: 'angular'
     },
     plugins: [
         new webpack.BannerPlugin(banner)
