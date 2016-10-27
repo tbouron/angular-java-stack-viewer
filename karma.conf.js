@@ -25,6 +25,9 @@ module.exports = function (config) {
         webpackMiddleware: {
             stats: 'errors-only'
         },
+        coverageReporter: {
+            type : 'lcov'
+        },
         autoWatch: env !== 'ci',
         colors: env !== 'ci',
         singleRun: env === 'ci'
