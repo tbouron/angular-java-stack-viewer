@@ -1,7 +1,9 @@
 # angular-java-stack-viewer
-Modern Java stack traces viewer for Angular 1.x.
+Modern Java stack traces viewer for Angular 1.x. 
 
-*It has been develop to use [Bootstrap](http://getbootstrap.com/) as CSS framework.*
+You can checkout this [the working demo](https://codepen.io/tbouron/pen/KgLpWB) to see how it looks like.
+
+*The library has been developed to use [Bootstrap](http://getbootstrap.com/) as CSS framework. However, you can use your own CSS and template if you want to, see `Usage` section.*
 
 ## Install
 
@@ -27,7 +29,7 @@ For yarn:
 
 ## Usage
 
-The library is package as an angular *module* that contains the CSS and the bootstrap template via `$templateCache` service. This means you have the full control over what you include in your application for CSS and template. Check out [the working demo](https://codepen.io/tbouron/pen/LRXoKX)
+The library is package as an angular *module* that contains the CSS and the bootstrap template via `$templateCache` service. This means you have the full control over what you include in your application for CSS and template.
 
 ### Full-blown module
 
