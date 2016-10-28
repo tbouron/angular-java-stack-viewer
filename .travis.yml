@@ -4,5 +4,4 @@ node_js:
   - "5"
   - "4"
 after_script:
-  - cat ./coverage/PhantomJS\ 2.1.1\ \(Linux\ 0.0.0\)/lcov.info | ./node_modules/.bin/codacy-coverage
   - bash <(curl -s https://codecov.io/bash)
