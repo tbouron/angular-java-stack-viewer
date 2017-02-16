@@ -1,6 +1,6 @@
 {
   "name": "angular-java-stack-viewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modern Java stack traces viewer for Angular",
   "main": "lib/angular-java-stack-viewer.js",
   "scripts": {
