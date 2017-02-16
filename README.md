@@ -3,6 +3,11 @@ Modern Java stack traces viewer for Angular 1.x.
 
 You can checkout this [the working demo](https://codepen.io/tbouron/pen/KgLpWB) to see how it looks like.
 
+| Branch | Build | Grade | Test coverage |
+| --- | --- | --- | --- |
+| `master` *(Stable)* | [![Travis](https://img.shields.io/travis/tbouron/angular-java-stack-viewer/master.svg)](https://travis-ci.org/tbouron/angular-java-stack-viewer/branches) | [![Codacy](https://img.shields.io/codacy/grade/8a2c7136efee4433b21c32f872c98c0d/master.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/dashboard?bid=3852866) | [![Codecov](https://img.shields.io/codecov/c/github/tbouron/angular-java-stack-viewer/master.svg)](https://codecov.io/gh/tbouron/angular-java-stack-viewer/branch/master) |
+| `develop` | [![Travis](https://img.shields.io/travis/tbouron/angular-java-stack-viewer/develop.svg)](https://travis-ci.org/tbouron/angular-java-stack-viewer/branches) | [![Codacy](https://img.shields.io/codacy/grade/8a2c7136efee4433b21c32f872c98c0d/develop.svg)](https://www.codacy.com/app/tbouron/java-stack-parser/dashboard?bid=3852865) | [![Codecov](https://img.shields.io/codecov/c/github/tbouron/angular-java-stack-viewer/develop.svg)](https://codecov.io/gh/tbouron/angular-java-stack-viewer/branch/develop) |
+
 *The library has been developed to use [Bootstrap](http://getbootstrap.com/) as CSS framework. However, you can use your own CSS and template if you want to, see `Usage` section.*
 
 ## Install
